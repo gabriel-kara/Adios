@@ -3,7 +3,7 @@ services:
   humhub:
     image: gabrielkarapetian1/humhub_kubernetes:latest
     ports:
-      - "8080:80"
+      - 80
     environment:
       HUMHUB_DB_USER: ${HUMHUB_DB_USER}
       HUMHUB_DB_PASSWORD: ${HUMHUB_DB_PASSWORD}
