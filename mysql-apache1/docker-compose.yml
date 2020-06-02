@@ -1,0 +1,13 @@
+version: '3'
+services:
+ apache:
+   image: 420698008/apachemysql
+   restart: always
+   tty: true
+   ports:
+     - ${PORT}:80
+     - "3306:3306"
+   volumes:
+     - ./web:/var/ww/html
+   networks:
+     - default
