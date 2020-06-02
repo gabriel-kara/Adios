@@ -9,5 +9,4 @@ services:
      - "3306:3306"
    volumes:
      - ./web:/var/ww/html
-   networks:
-     - default
+  
