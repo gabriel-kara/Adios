@@ -1,9 +1,24 @@
 
+version: '2'
 services:
+   users_db:
+    image: gabrielkarapetian1/couchdb
+    ports:
+      - ${PORT_AUTH_DB}:5984
+   auth_ms:
+    image: gabrielkarapetian1/auth
+    environment:
+      DB_PORT: '5984'
+      DB_URL: ${DB_USER_AUTH}
+      JWT_SECRET: ${PASS_AUTH} # Put your own secret!
+    ports:
+      - ${PORT_AUTH}:4005
+    links:
+      - users_db
   www:
       image: gabrielkarapetian1/apache
       ports:
-          - ${PORT}:80
+          - ${PORT_APACHE}:80
       links:
           - db
   db:
