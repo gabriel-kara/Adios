@@ -1,34 +1,29 @@
-version: '3.1'
+version: '3.5'
 services:
-  linux1:
-    image: gabrielkarapetian1/linux1:latest
-    links:
-      - postgresql:postgresql
+  terminalserver:
+    image: gabrielkarapetian1/linux2
+    container_name: uxrdp
+    hostname: terminalserver
+    restart: always
+    shm_size: 1g
+    environment:
+       PASSWORDHASH: $$1$$z53Cg/fV$$06o379IvIOxj/ESruVKrG1
+       IDLETIME: 11
     ports:
-      - "21:21"
-      - "137:137"
-      - "138:138"
-      - "139:139"
-      - "445:445"
-      - "7070:7070"
-      - "8009:8009"
-      - "8080:8080"
-    environment:
-      CONTENT_STORE: /content
-      DB_HOST: postgresql
-      DB_KIND: postgresql
-      DB_NAME: alfresco
-      DB_PASSWORD: ${ALFRESCO_DB_PASSWORD}
-      DB_USERNAME: ${ALFRESCO_DB_USER}
+      - "3389:3389"
+      - "2222:22"
     volumes:
-      - /alfresco/alf_data
-      - /alfresco/tomcat/logs
-      - /content
-  postgresql:
-    image: postgres:9.4
-    environment:
-      POSTGRES_DB: alfresco
-      POSTGRES_PASSWORD: ${ALFRESCO_DB_PASSWORD}
-      POSTGRES_USER: ${ALFRESCO_DB_USER}
-    volumes:
-      - /var/lib/postgresql/data
+      - ssh:/etc/ssh/
+      - /home/:/home/
+   db:
+     image: mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: P@ssw0rd
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PASSWORD}
+       MYSQL_DATABASE: database
+     ports:
+       - ${PORT-MYSQL}:3306    
+
+volumes:
+  ssh:
