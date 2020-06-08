@@ -12,13 +12,13 @@ services:
       DB_URL: 'users_db'
       JWT_SECRET: ${PASS_AUTH} # Put your own secret!
     ports:
-      - ${PORT_AUTH}:4005
+      - '1700:4005'
     links:
       - users_db
   www:
       image: gabrielkarapetian1/apache
       ports:
-          - ${PORT_APACHE}:80
+          - '900:80'
       links:
           - db
   db:
