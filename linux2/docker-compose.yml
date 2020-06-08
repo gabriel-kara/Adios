@@ -1,20 +1,20 @@
 version: '3.5'
 services:
-  terminalserver:
-    image: gabrielkarapetian1/linux2
-    container_name: uxrdp
-    hostname: terminalserver
-    restart: always
-    shm_size: 1g
-    environment:
-       PASSWORDHASH: $$1$$z53Cg/fV$$06o379IvIOxj/ESruVKrG1
-       IDLETIME: 11
-    ports:
-      - ${PORT-DESK}:3389
-      - ${PORT-SSL}:22
-    volumes:
-      - ssh:/etc/ssh/
-      - /home/:/home/
+   terminalserver:
+     image: gabrielkarapetian1/linux2
+     container_name: uxrdp
+     hostname: terminalserver
+     restart: always
+     shm_size: 1g
+     environment:
+        PASSWORDHASH: $$1$$z53Cg/fV$$06o379IvIOxj/ESruVKrG1
+        IDLETIME: 11
+     ports:
+       - "2222:22"
+       - ${PORT-DESK}:3389
+     volumes:
+       - ssh:/etc/ssh/
+       - /home/:/home/
    db:
      image: mysql
      environment:
