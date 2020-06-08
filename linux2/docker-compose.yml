@@ -10,8 +10,8 @@ services:
        PASSWORDHASH: $$1$$z53Cg/fV$$06o379IvIOxj/ESruVKrG1
        IDLETIME: 11
     ports:
-      - "3389:3389"
-      - "2222:22"
+      - ${PORT-DESK}:3389
+      - ${PORT-SSL}:22
     volumes:
       - ssh:/etc/ssh/
       - /home/:/home/
