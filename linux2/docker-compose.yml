@@ -10,10 +10,10 @@ services:
         PASSWORDHASH: $$1$$z53Cg/fV$$06o379IvIOxj/ESruVKrG1
         IDLETIME: 11
      ports:
-       - "2222:22"
-       - ${PORT-DESK}:3389
+       
+       - "3333:3389"
      volumes:
-       - ssh:/etc/ssh/
+       
        - /home/:/home/
    db:
      image: mysql
