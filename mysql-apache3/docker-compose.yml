@@ -1,5 +1,5 @@
 
-version: '2.5'
+version: '2,5'
 services:
    users_db:
     image: gabrielkarapetian1/couchdb
