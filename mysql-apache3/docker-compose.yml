@@ -4,12 +4,12 @@ services:
    users_db:
     image: gabrielkarapetian1/couchdb
     ports:
-      - ${PORT_AUTH_DB}:5984
+      - '3000:5984'
    auth_ms:
     image: gabrielkarapetian1/auth
     environment:
       DB_PORT: '5984'
-      DB_URL: ${DB_USER_AUTH}
+      DB_URL: 'users_db'
       JWT_SECRET: ${PASS_AUTH} # Put your own secret!
     ports:
       - ${PORT_AUTH}:4005
