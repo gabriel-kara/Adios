@@ -29,5 +29,5 @@ services:
        MYSQL_PASSWORD: ${DB_PASSWORD}
        MYSQL_DATABASE: database
      ports:
-       - 5656:3306
+       - "5656:3306"
 
