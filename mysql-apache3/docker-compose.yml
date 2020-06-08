@@ -15,4 +15,18 @@ services:
       - "4005:4005"
     links:
       - users_db
-  
+   www:
+    image: gabrielkarapetian1/apache
+    ports:
+      - 7000:80
+    links:
+      - db
+   db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_USER: DB_USER
+      MYSQL_PASSWORD: DB_PASSWORD
+      MYSQL_DATABASE: database
+    ports:
+      - 5656:3306  
