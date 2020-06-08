@@ -4,7 +4,7 @@ services:
    users_db:
     image: gabrielkarapetian1/couchdb
     ports:
-      - "3040:5984"
+      - "5984:5984"
    auth_ms:
     image: gabrielkarapetian1/auth
     environment:
