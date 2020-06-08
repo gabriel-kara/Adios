@@ -10,7 +10,7 @@ services:
     environment:
       DB_PORT: '5984'
       DB_URL: 'users_db'
-      JWT_SECRET: ${PASS_AUTH} # Put your own secret!
+      JWT_SECRET: 'P@ssw0rd' # Put your own secret!
     ports:
       - '1700:4005'
     links:
