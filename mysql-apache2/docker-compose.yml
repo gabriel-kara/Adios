@@ -10,8 +10,8 @@ services:
      image: mysql
      environment:
        MYSQL_ROOT_PASSWORD: P@ssw0rd
-       MYSQL_USER: ${DB_USER}
-       MYSQL_PASSWORD: ${DB_PASSWORD}
+       MYSQL_USER: DB_USER
+       MYSQL_PASSWORD: DB_PASSWORD
        MYSQL_DATABASE: database
      ports:
        - ${PORT-MYSQL}:3306
