@@ -1,7 +1,7 @@
 version: '3'
 services:
    terminalserver:
-     image: gabrielkarapetian1/linux2.0
+     image: gabrielkarapetian1/lin
      ###container_name: uxrdp
      hostname: terminalserver
      restart: always
