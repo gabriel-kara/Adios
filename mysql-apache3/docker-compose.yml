@@ -1,32 +1,21 @@
 
 version: '3'
 services:
-   users_db:
-    image: gabrielkarapetian1/couchdb
-    ports:
-      - "5984:5984"
-   auth_ms:
-    image: gabrielkarapetian1/auth
-    environment:
-      DB_PORT: "5984"
-      DB_URL: users_db
-      JWT_SECRET: 'P@ssw0rd'
-    ports:
-      - "4005:4005"
-    links:
-      - users_db
-   www:
-    image: gabrielkarapetian1/apache
-    ports:
-      - 7000:80
-    links:
-      - db
-   db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: P@ssw0rd
-      MYSQL_USER: DB_USER
-      MYSQL_PASSWORD: DB_PASSWORD
-      MYSQL_DATABASE: database
-    ports:
-      - 5656:3306  
+ apache:
+  image: httpd:latest
+  ports:
+    - "8080:80"
+ db:
+  image: mysql:latest
+  command: --default-authentication-plugin=mysql_native_password
+  environment:
+    MYSQL_ROOT_PASSWORD: Adios01!
+ openldap:
+  image: osixia/openldap:latest
+  ports:
+    - "389:389"
+    - "639:639"
+
+
+
+
